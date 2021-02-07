@@ -9,6 +9,7 @@ import com.qcloud.cos.auth.COSCredentials;
 import com.qcloud.cos.http.HttpMethodName;
 import com.qcloud.cos.model.*;
 import com.qcloud.cos.region.Region;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -20,8 +21,10 @@ import java.util.UUID;
 @Component
 public class QCloudProvider {
     // 1 初始化用户身份信息（secretId, secretKey）。
-    String secretId = "AKIDhBOL0RYU6VkkCNsKhpjPoBRbUa1CBx1o";
-    String secretKey = "e2E6RFgvyluoUt1uaNwKVCes1vd6LNO8";
+    @Value("${qcloud.secretId}")
+    private String secretId;
+    @Value("${qcloud.secretKey}")
+    private String secretKey;
 
     public String cloudUpload(InputStream fileStream,String mimeType,String filename) {
         String downloadUrl="";
