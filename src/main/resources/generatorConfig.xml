@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--生成分页查询语句-->
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"></plugin>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/kkbbs?characterEncoding=UTF-8&amp;serverTimezone=GMT"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!--生成entity类存放位置-->
+        <javaModelGenerator targetPackage="com.kyriewang.kkbbs.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="mapper"  targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.kyriewang.kkbbs.mapper"  targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!--生成的表单和实体类的名称-->
+        <table tableName="comment" domainObjectName="Comment" >
+            <!--true表示生成类名时不使用驼峰标识-->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="notification" domainObjectName="Notification" >
+            <!--true表示生成类名时不使用驼峰标识-->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>

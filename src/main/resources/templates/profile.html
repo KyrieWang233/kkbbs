@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title th:text="${sectionName}"></title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" >
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css" >
+    <link rel="stylesheet" href="/css/kkbbs.css" >
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap-paginator.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+
+<div th:insert="~{navigation :: nav}"></div>
+
+<div class="container-fluid main">
+    <div class="row">
+        <div class="col-lg-9 col-md-10 col-sm-12 col-xs-12 " >
+            <h3><span class="glyphicon glyphicon-list" aria-hidden="true" th:text="${sectionName}"></span></h3>
+            <hr>
+            <div class="col-lg-9 col-md-10 col-sm-12 col-xs-12 " th:if="${section == 'question'}" >
+                <p class="text-center" th:text="${questions.size()}==0?'暂无问题':''"></p>
+                <div class="media" th:each="question : ${questions}">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object" th:src="${question.user.avatar_url}" alt="">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading" th:text="${question.title}">标题</h4>
+                        <span th:text="${question.description}"></span>
+                        <br />
+                        <span class="text-desc">
+                            <span th:text="${question.comment_count}"></span> 个评论 • <span th:text="${question.view_count}"></span> 次浏览 •
+                            <span th:text="${#dates.format(question.gmt_create,'yyyy-MM-dd HH:mm')}"></span> •
+                            <a th:href="@{'/publish/'+${question.id}}" class="community-menu"
+                                                   th:if="${session.user != null && session.user.id == question.creator}">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true">编辑</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div id="paginator" style="text-align: center"> <ul id="example1"></ul> </div>
+            </div>
+            <div class="col-lg-9 col-md-10 col-sm-12 col-xs-12 " th:if="${section == 'replies'}">
+                <div class="media" th:each="notification : ${notifications}">
+                    <div class="media-body">
+                        <p class="media-heading">
+                            <span th:text="${notification.out_username +' ' + notification.typename + ' '}"></span>
+                            <a th:href="@{'/notification/'+ ${notification.id}}"
+                               th:text="${notification.out_title}">
+                            </a>
+                            <span class="label label-danger" th:if="${notification.status == 0}">未读</span>
+                        </p>
+                    </div>
+                </div>
+                <div id="paginator" style="text-align: center"> <ul id="example2"></ul> </div>
+            </div>
+        </div>
+
+            <script type='text/javascript'>
+                var options = {
+                    currentPage: [[${currentpage}]],
+                    totalPages: [[${totalpages}]],
+                    pageUrl: function(type, page, current){
+                        return "./question?page="+page;
+
+                    }
+                }
+
+                $('#example1').bootstrapPaginator(options);
+            </script>
+        <script type='text/javascript'>
+            var options = {
+                currentPage: [[${currentpage}]],
+                totalPages: [[${totalpages}]],
+                pageUrl: function(type, page, current){
+                    return "./replies?page="+page;
+
+                }
+            }
+
+            $('#example2').bootstrapPaginator(options);
+        </script>
+
+        <div class="col-lg-3 col-md-2 col-sm-12 col-xs-12">
+            <div class="list-group profile">
+                <a href="/profile/question" th:class="${section=='question'}? 'list-group-item active':'list-group-item' ">
+                    我的问题
+                    <span class="badge">14</span>
+                </a>
+                <a href="/profile/replies" th:class=" ${section=='replies'}? 'list-group-item active ':'list-group-item' ">回复
+                    <span class="badge" th:text="${session.unreadCount}"></span>
+                </a>
+                <a href="#" class="list-group-item">Morbi leo risus</a>
+                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                <a href="#" class="list-group-item">Vestibulum at eros</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="~{footer :: foot}"></div>
+</body>
+</html>

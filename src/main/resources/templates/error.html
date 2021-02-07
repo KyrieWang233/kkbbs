@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:spanth="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>KyrieWang论坛</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" >
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css" >
+    <link rel="stylesheet" href="/css/kkbbs.css" >
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap-paginator.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+</head>
+<body>
+
+<div th:insert="~{navigation :: nav}"></div>
+<div class="jumbotron">
+    <div class="container">
+        <h1>出错啦</h1>
+        <p th:text="${message}">服务器坏掉了，等会儿再试试</p>
+        <p><a class="btn btn-primary btn-lg" href="/" role="button">回到首页</a></p>
+    </div>
+</div>
+
+</body>
+</html>

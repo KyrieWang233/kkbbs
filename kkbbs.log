@@ -1,0 +1,112 @@
+2021-01-29 20:07:42.817  INFO 8972 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Starting KkbbsApplication on DESKTOP-MGI1RSV with PID 8972 (F:\Java\SpringbootWorkspace\kkbbs\target\classes started by 77364 in F:\Java\SpringbootWorkspace\kkbbs)
+2021-01-29 20:07:42.820  INFO 8972 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : No active profile set, falling back to default profiles: default
+2021-01-29 20:07:46.316  INFO 8972 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-29 20:07:46.350  INFO 8972 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-29 20:07:46.350  INFO 8972 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-01-29 20:07:46.712  INFO 8972 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-29 20:07:46.712  INFO 8972 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3786 ms
+2021-01-29 20:07:48.057  INFO 8972 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-29 20:07:48.181  INFO 8972 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-01-29 20:07:48.478  INFO 8972 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-29 20:07:48.565  INFO 8972 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Started KkbbsApplication in 6.72 seconds (JVM running for 8.103)
+2021-01-29 20:08:05.510  INFO 8972 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-29 20:08:05.510  INFO 8972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-29 20:08:05.517  INFO 8972 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2021-01-29 20:08:05.670  INFO 8972 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-29 20:08:07.889  INFO 8972 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-29 23:23:55.489  INFO 8480 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Starting KkbbsApplication on DESKTOP-MGI1RSV with PID 8480 (F:\Java\SpringbootWorkspace\kkbbs\target\classes started by 77364 in F:\Java\SpringbootWorkspace\kkbbs)
+2021-01-29 23:23:55.499 DEBUG 8480 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2021-01-29 23:23:55.506  INFO 8480 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : No active profile set, falling back to default profiles: default
+2021-01-29 23:23:57.053  INFO 8480 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-29 23:23:57.064  INFO 8480 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-29 23:23:57.064  INFO 8480 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-01-29 23:23:57.294  INFO 8480 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-29 23:23:57.297  INFO 8480 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1685 ms
+2021-01-29 23:24:03.059  INFO 11780 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Starting KkbbsApplication on DESKTOP-MGI1RSV with PID 11780 (F:\Java\SpringbootWorkspace\kkbbs\target\classes started by 77364 in F:\Java\SpringbootWorkspace\kkbbs)
+2021-01-29 23:24:03.062 DEBUG 11780 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2021-01-29 23:24:03.062  INFO 11780 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : No active profile set, falling back to default profiles: default
+2021-01-29 23:24:04.328  INFO 11780 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-29 23:24:04.339  INFO 11780 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-29 23:24:04.339  INFO 11780 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-01-29 23:24:04.449  INFO 11780 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-29 23:24:04.450  INFO 11780 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1300 ms
+2021-01-29 23:24:05.021  INFO 11780 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-29 23:24:05.085  INFO 11780 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-01-29 23:24:05.233  INFO 11780 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-29 23:24:05.244  INFO 11780 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Started KkbbsApplication in 3.012 seconds (JVM running for 4.414)
+2021-01-29 23:24:24.314  INFO 11780 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-29 23:24:24.314  INFO 11780 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-29 23:24:24.320  INFO 11780 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2021-01-29 23:24:24.379  INFO 11780 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-29 23:24:25.483  INFO 11780 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-29 23:24:25.491 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.getList  : ==>  Preparing: select * from question limit ?,? 
+2021-01-29 23:24:25.516 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.getList  : ==> Parameters: 0(Integer), 5(Integer)
+2021-01-29 23:24:25.540 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.getList  : <==      Total: 5
+2021-01-29 23:24:25.545 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==>  Preparing: select * from user where id=? 
+2021-01-29 23:24:25.545 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==> Parameters: 1(Long)
+2021-01-29 23:24:25.548 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : <==      Total: 1
+2021-01-29 23:24:25.553 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==>  Preparing: select * from user where id=? 
+2021-01-29 23:24:25.554 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==> Parameters: 1(Long)
+2021-01-29 23:24:25.556 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : <==      Total: 1
+2021-01-29 23:24:25.556 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==>  Preparing: select * from user where id=? 
+2021-01-29 23:24:25.556 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==> Parameters: 1(Long)
+2021-01-29 23:24:25.558 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : <==      Total: 1
+2021-01-29 23:24:25.558 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==>  Preparing: select * from user where id=? 
+2021-01-29 23:24:25.559 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==> Parameters: 1(Long)
+2021-01-29 23:24:25.560 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : <==      Total: 1
+2021-01-29 23:24:25.560 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==>  Preparing: select * from user where id=? 
+2021-01-29 23:24:25.561 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==> Parameters: 1(Long)
+2021-01-29 23:24:25.562 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : <==      Total: 1
+2021-01-29 23:24:25.563 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.count    : ==>  Preparing: select count(1) from question 
+2021-01-29 23:24:25.564 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.count    : ==> Parameters: 
+2021-01-29 23:24:25.569 DEBUG 11780 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.count    : <==      Total: 1
+2021-01-29 23:37:39.977  INFO 2120 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Starting KkbbsApplication on DESKTOP-MGI1RSV with PID 2120 (F:\Java\SpringbootWorkspace\kkbbs\target\classes started by 77364 in F:\Java\SpringbootWorkspace\kkbbs)
+2021-01-29 23:37:39.980 DEBUG 2120 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2021-01-29 23:37:39.981  INFO 2120 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : No active profile set, falling back to default profiles: default
+2021-01-29 23:37:41.148  INFO 2120 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-29 23:37:41.156  INFO 2120 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-29 23:37:41.157  INFO 2120 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-01-29 23:37:41.264  INFO 2120 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-29 23:37:41.264  INFO 2120 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1229 ms
+2021-01-29 23:37:41.789  INFO 2120 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-29 23:37:41.852  INFO 2120 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-01-29 23:37:41.996  INFO 2120 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-29 23:37:42.007  INFO 2120 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Started KkbbsApplication in 2.756 seconds (JVM running for 4.389)
+2021-01-29 23:38:15.241  INFO 19792 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Starting KkbbsApplication on DESKTOP-MGI1RSV with PID 19792 (F:\Java\SpringbootWorkspace\kkbbs\target\classes started by 77364 in F:\Java\SpringbootWorkspace\kkbbs)
+2021-01-29 23:38:15.244 DEBUG 19792 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Running with Spring Boot v2.3.3.RELEASE, Spring v5.2.8.RELEASE
+2021-01-29 23:38:15.251  INFO 19792 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : No active profile set, falling back to default profiles: default
+2021-01-29 23:38:16.832  INFO 19792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-29 23:38:16.843  INFO 19792 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-29 23:38:16.843  INFO 19792 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-01-29 23:38:16.978  INFO 19792 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-29 23:38:16.979  INFO 19792 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1656 ms
+2021-01-29 23:38:17.639  INFO 19792 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-29 23:38:17.758  INFO 19792 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-01-29 23:38:18.012  INFO 19792 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-29 23:38:18.022  INFO 19792 --- [main] com.kyriewang.kkbbs.KkbbsApplication     : Started KkbbsApplication in 3.471 seconds (JVM running for 5.258)
+2021-01-29 23:38:38.779  INFO 19792 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-29 23:38:38.780  INFO 19792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-29 23:38:38.787  INFO 19792 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2021-01-29 23:38:38.841  INFO 19792 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-01-29 23:38:40.046  INFO 19792 --- [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-01-29 23:38:40.055 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.getList  : ==>  Preparing: select * from question limit ?,? 
+2021-01-29 23:38:40.078 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.getList  : ==> Parameters: 0(Integer), 5(Integer)
+2021-01-29 23:38:40.103 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.getList  : <==      Total: 5
+2021-01-29 23:38:40.109 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==>  Preparing: select * from user where id=? 
+2021-01-29 23:38:40.109 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==> Parameters: 1(Long)
+2021-01-29 23:38:40.111 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : <==      Total: 1
+2021-01-29 23:38:40.118 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==>  Preparing: select * from user where id=? 
+2021-01-29 23:38:40.119 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==> Parameters: 1(Long)
+2021-01-29 23:38:40.121 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : <==      Total: 1
+2021-01-29 23:38:40.122 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==>  Preparing: select * from user where id=? 
+2021-01-29 23:38:40.122 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==> Parameters: 1(Long)
+2021-01-29 23:38:40.123 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : <==      Total: 1
+2021-01-29 23:38:40.124 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==>  Preparing: select * from user where id=? 
+2021-01-29 23:38:40.124 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==> Parameters: 1(Long)
+2021-01-29 23:38:40.126 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : <==      Total: 1
+2021-01-29 23:38:40.126 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==>  Preparing: select * from user where id=? 
+2021-01-29 23:38:40.126 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : ==> Parameters: 1(Long)
+2021-01-29 23:38:40.128 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.UserMapper.findById     : <==      Total: 1
+2021-01-29 23:38:40.129 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.count    : ==>  Preparing: select count(1) from question 
+2021-01-29 23:38:40.130 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.count    : ==> Parameters: 
+2021-01-29 23:38:40.134 DEBUG 19792 --- [http-nio-8080-exec-1] c.k.kkbbs.mapper.QuestionMapper.count    : <==      Total: 1
