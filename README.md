@@ -20,3 +20,12 @@
 mvn flyway:migrate
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```
+
+需要自己添加的配置
+```properties
+github.client.id=
+github.client.secret=
+github.redirect.url=
+qcloud.secretId=
+qcloud.secretKey=
+```
