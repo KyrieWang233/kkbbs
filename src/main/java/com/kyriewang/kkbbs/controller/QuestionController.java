@@ -2,6 +2,7 @@ package com.kyriewang.kkbbs.controller;
 
 import com.kyriewang.kkbbs.dto.CommentDto;
 import com.kyriewang.kkbbs.dto.QuestionDto;
+import com.kyriewang.kkbbs.dto.ResultDto;
 import com.kyriewang.kkbbs.enums.CommentTypeEnum;
 import com.kyriewang.kkbbs.model.Question;
 import com.kyriewang.kkbbs.service.CommentService;
@@ -11,10 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class QuestionController {
     @Autowired
     QuestionService questionService;
@@ -23,7 +25,7 @@ public class QuestionController {
     CommentService commentService;
 
     @RequestMapping("question/{id}")
-    public String question(@PathVariable("id") Long id,
+    public ResultDto question(@PathVariable("id") Long id,
                            Model model){
         QuestionDto questionDto = questionService.getQuestionById(id);
         questionService.incView(id);
@@ -33,6 +35,6 @@ public class QuestionController {
         model.addAttribute("question",questionDto);
         model.addAttribute("comments",commentDtos);
         model.addAttribute("relatedQuestions",relatedQuestions);
-        return "question";
+        return ResultDto.succ("查询成功",model);
     }
 }

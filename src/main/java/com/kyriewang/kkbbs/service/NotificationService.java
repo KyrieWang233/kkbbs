@@ -46,29 +46,28 @@ public class NotificationService {
         return pageDto;
     }
 
-    public NotificationDto read(Long id, User user) {
+    //返回是否读取成功，如果消息已读那么返回false，未读则修改后返回true
+    public Boolean read(Long id, Long userId) {
         Notification notification = notificationMapper.selectByPrimaryKey(id);
         if(notification == null){
             throw new CustomizerException(CustomizeErrorCode.NOTIFICATION_NOT_FOUND);
         }
-        if(!Objects.equals(notification.getReceiver(),user.getId())){
+        if(!Objects.equals(notification.getReceiver(),userId)){
             throw new CustomizerException(CustomizeErrorCode.READ_NOTIFICATION_FAIL);//如果当前用户与评论对象不一致
         }
-
+        if(notification.getStatus()==NotificationStatusEnum.READ.getStatus()){//如果该消息状态为已经读取
+            return false;
+        }
         notification.setStatus(NotificationStatusEnum.READ.getStatus());//修改消息读取状态
-        notificationMapper.updateByPrimaryKey(notification);
-
-        NotificationDto notificationDto = new NotificationDto();
-        BeanUtils.copyProperties(notification,notificationDto);
-
-        return notificationDto;
+        notificationMapper.updateByPrimaryKey(notification);//更新数据库
+        return true;
     }
 
-    public Long getUnreadCount(User user) {
+    public Long getUnreadCount(Long userId) {
         NotificationExample notificationExample = new NotificationExample();
         //查询当前用户所有未读的信息
         notificationExample.createCriteria()
-                .andReceiverEqualTo(user.getId())
+                .andReceiverEqualTo(userId)
                 .andStatusEqualTo(NotificationStatusEnum.UNREAD.getStatus());
         return notificationMapper.countByExample(notificationExample);
     }

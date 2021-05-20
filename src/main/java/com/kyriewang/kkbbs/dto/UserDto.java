@@ -1,17 +1,14 @@
-package com.kyriewang.kkbbs.model;
+package com.kyriewang.kkbbs.dto;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public class User implements Serializable{
+//对用户进行一层封装，防止泄露信息
+public class UserDto implements Serializable {
     private Long id;
-    private String account_id;
     private String name;
-    private String password;
-    private String salt;
-    private String token;
     private Long gmt_create;
     private Long gmt_modified;
     private String avatar_url;

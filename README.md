@@ -1,6 +1,6 @@
-##基于SpringBoot的论坛网站
+## 基于SpringBoot的论坛网站
 
-#技术栈
+# 技术栈
 |  技术   |  链接   |
 | --- | --- |
 |  Spring Boot   |  http://projects.spring.io/spring-boot/#quick-start   |
@@ -11,7 +11,7 @@
 |Lombok| https://www.projectlombok.org |
 |Bootstrap|https://v3.bootcss.com/getting-started/|
 |Github OAuth|https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/|
-|UFile|https://github.com/ucloud/ufile-sdk-java|
+|QCloud-cos|https://cloud.tencent.com/document/product/436/10199|
 |Bootstrap|https://v3.bootcss.com/getting-started/|
 
 

@@ -9,7 +9,10 @@ public interface UserMapper {
     @Select("select * from user where id=#{id}")
     public User getUser(Long id);
 
-    @Insert("insert into user (name,account_id,token,gmt_create,gmt_modified,avatar_url) values (#{name},#{account_id},#{token},#{gmt_create},#{gmt_modified},#{avatar_url})")
+    @Select("select * from user where name=#{name}")
+    public User getByName(String name);
+
+    @Insert("insert into user (name,account_id,password,salt,gmt_create,gmt_modified,role,register_way,avatar_url) values (#{name},#{account_id},#{password},#{salt},#{gmt_create},#{gmt_modified},#{role},#{register_way},#{avatar_url})")
     public void insertUser(User user);
 
     @Select("select * from user where token=#{token}")

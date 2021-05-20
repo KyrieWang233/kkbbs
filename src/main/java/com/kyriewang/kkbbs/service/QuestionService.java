@@ -2,6 +2,7 @@ package com.kyriewang.kkbbs.service;
 
 import com.kyriewang.kkbbs.dto.PageDto;
 import com.kyriewang.kkbbs.dto.QuestionDto;
+import com.kyriewang.kkbbs.dto.UserDto;
 import com.kyriewang.kkbbs.exception.CustomizeErrorCode;
 import com.kyriewang.kkbbs.exception.CustomizerException;
 import com.kyriewang.kkbbs.mapper.QuestionMapper;
@@ -28,6 +29,9 @@ public class QuestionService {
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    UserService userService;
+
     public PageDto GetQuestionList(Integer page, Integer size){
         if(page<1) page=1;
 
@@ -35,7 +39,7 @@ public class QuestionService {
         List<Question>  questions = questionMapper.getList(offset,size);
         List<QuestionDto> questionDtoList = new ArrayList<>();
         for(Question question : questions){
-            User user = userMapper.findById(question.getCreator());
+            UserDto user = userService.getuserById(question.getCreator());
             QuestionDto questionDto = new QuestionDto();
             BeanUtils.copyProperties(question,questionDto);
             questionDto.setUser(user);
@@ -53,7 +57,7 @@ public class QuestionService {
         List<Question>  questions = questionMapper.getUserList(userId,offset,size);
         List<QuestionDto> questionDtoList = new ArrayList<>();
         for(Question question : questions){
-            User user = userMapper.findById(userId);
+            UserDto user = userService.getuserById(userId);
             QuestionDto questionDto = new QuestionDto();
             BeanUtils.copyProperties(question,questionDto);
             questionDto.setUser(user);
@@ -70,7 +74,7 @@ public class QuestionService {
         if(question == null){
             throw new CustomizerException(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }
-        User user = userMapper.findById(question.getCreator());
+        UserDto user = userService.getuserById(question.getCreator());
         QuestionDto questionDto = new QuestionDto();
         BeanUtils.copyProperties(question,questionDto);
         questionDto.setUser(user);

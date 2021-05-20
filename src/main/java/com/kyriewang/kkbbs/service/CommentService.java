@@ -1,6 +1,8 @@
 package com.kyriewang.kkbbs.service;
 
 import com.kyriewang.kkbbs.dto.CommentDto;
+import com.kyriewang.kkbbs.dto.CommentPostDto;
+import com.kyriewang.kkbbs.dto.UserDto;
 import com.kyriewang.kkbbs.enums.CommentTypeEnum;
 import com.kyriewang.kkbbs.enums.NotificationStatusEnum;
 import com.kyriewang.kkbbs.enums.NotificationTypeEnum;
@@ -8,8 +10,11 @@ import com.kyriewang.kkbbs.exception.CustomizeErrorCode;
 import com.kyriewang.kkbbs.exception.CustomizerException;
 import com.kyriewang.kkbbs.mapper.*;
 import com.kyriewang.kkbbs.model.*;
+import com.kyriewang.kkbbs.shiro.AccountProfile;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +25,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CommentService {
 
     @Autowired
@@ -35,10 +41,22 @@ public class CommentService {
     UserMapper userMapper;
 
     @Autowired
+    UserService userService;
+
+    @Autowired
     NotificationMapper notificationMapper;
 
     @Transactional
-    public void insert(Comment comment, User user){
+    public void insert(CommentPostDto commentPostDto, AccountProfile user){
+        Comment comment = new Comment();
+        comment.setParent_id(commentPostDto.getParent_id());
+        comment.setContent(commentPostDto.getContent());
+        comment.setType(commentPostDto.getType());
+        comment.setComment_creator(user.getId());
+        comment.setComment_count(0);
+        comment.setLike_count(0l);
+        comment.setGmt_create(System.currentTimeMillis());
+        comment.setGmt_modified(System.currentTimeMillis());
         if(comment.getParent_id()==null||comment.getParent_id()==0){
             throw new CustomizerException(CustomizeErrorCode.TARGET_PARAM_NOT_FOUND);
         }
@@ -53,6 +71,7 @@ public class CommentService {
             }
             //设置消息种类设置接受者
             notification.setType(NotificationTypeEnum.REPLY_QUESTION.getType());
+            //一级评论，接收对象为问题的创建者
             receiver = question.getCreator();
 
         }else if(comment.getType()==2){
@@ -68,11 +87,12 @@ public class CommentService {
             commentExMapper.incCommentCount(comment1);
             //设置消息种类
             notification.setType(NotificationTypeEnum.REPLY_COMMENT.getType());
-            receiver = comment1.getComment_creator();
+            //如果是二级评论接收者为评论的回复对象id
+            receiver = commentPostDto.getReceiver_id();
         }else{
             throw new CustomizerException(CustomizeErrorCode.COMMENT_TYPE_ERROR);
         }
-        if(receiver!=user.getId())//如果消息不是给自己发的，那么才生成提醒
+        if(!receiver.equals(user.getId()))//如果消息不是给自己发的，那么才生成提醒
         {
             notification.setNotifier(user.getId());
             notification.setReceiver(receiver);
@@ -80,9 +100,13 @@ public class CommentService {
             notification.setGmt_create(System.currentTimeMillis());
             notification.setOut_title(question.getTitle());
             notification.setOuterid(question.getId());
-            notification.setOut_username(user.getName());
+            notification.setOut_username(user.getName());//这个表示生成的提示链接显示的username
             notificationMapper.insert(notification);
         }
+        //给评论也添加回复对象的id
+        comment.setReceiver_id(receiver);
+        //把找个设计在数据库里，主要是觉得这样每次看评论的时候不用再查多查一次用户表了（毕竟只需要名字）
+        comment.setReceiver_name(userService.getuserById(receiver).getName());
         questionMapper.incCommentCount(question.getId());
         commentMapper.insert(comment);
     }
@@ -93,7 +117,10 @@ public class CommentService {
         commentExample.createCriteria()
                 .andParent_idEqualTo(id)
                 .andTypeEqualTo(commentTypeEnum.getType());
-        commentExample.setOrderByClause("gmt_create desc");
+        //如果是一级评论就是降序
+        if(commentTypeEnum==CommentTypeEnum.QUESSTION){
+            commentExample.setOrderByClause("gmt_create desc");
+        }
         List<Comment> comments = commentMapper.selectByExample(commentExample);
         if(comments.size()==0){
             return new ArrayList<>();
@@ -102,19 +129,21 @@ public class CommentService {
         Set<Long> commentators = comments.stream().map(comment -> comment.getComment_creator()).collect(Collectors.toSet());
         List<Long> userids = new ArrayList<>();
         userids.addAll(commentators);
-        List<User> users = new ArrayList<>();
+        List<UserDto> users = new ArrayList<>();
         //根据用户id查出所有的用户对象
         for (Long userid:userids) {
-            users.add(userMapper.getUser(userid));
+            users.add(userService.getuserById(userid));
         }
-        Map<Long,User> userMap = users.stream().collect(Collectors.toMap(user -> user.getId(),user -> user));
+        Map<Long,UserDto> userMap = users.stream().collect(Collectors.toMap(user -> user.getId(),user -> user));
 
         //把comment和user封装到commentDto里面
         List<CommentDto> commentDtos = new ArrayList<>();
+        List<CommentDto> replys = new ArrayList<>();
         for (Comment comment:comments) {
             CommentDto commentDto = new CommentDto();
             BeanUtils.copyProperties(comment,commentDto);
             commentDto.setUser(userMap.get(comment.getComment_creator()));
+            commentDto.setReplys(this.getCommentsByTargetId(commentDto.getId(),CommentTypeEnum.COMMENT));
             commentDtos.add(commentDto);
         }
 

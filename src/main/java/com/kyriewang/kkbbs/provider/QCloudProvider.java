@@ -10,6 +10,7 @@ import com.qcloud.cos.http.HttpMethodName;
 import com.qcloud.cos.model.*;
 import com.qcloud.cos.region.Region;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -18,6 +19,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.UUID;
 
+@PropertySource(value = { "classpath:user.properties" }, encoding = "utf-8")
 @Component
 public class QCloudProvider {
     // 1 初始化用户身份信息（secretId, secretKey）。
@@ -60,8 +62,9 @@ public class QCloudProvider {
             GeneratePresignedUrlRequest req =
                     new GeneratePresignedUrlRequest(bucketName, key, HttpMethodName.GET);
             // 设置签名过期时间(可选), 若未进行设置, 则默认使用 ClientConfig 中的签名过期时间(1小时)
-            // 这里设置签名在一个小时后过期
-            Date expirationDate = new Date(System.currentTimeMillis() + 60L * 60L * 1000L *24);
+            // 这里设置签名在一天后过期
+            //这里是两年
+            Date expirationDate = new Date(System.currentTimeMillis() + 60L * 60L * 1000L *24*365*2);
             req.setExpiration(expirationDate);
             URL url = cosClient.generatePresignedUrl(req);
             downloadUrl = url.toString();

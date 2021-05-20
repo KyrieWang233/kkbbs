@@ -13,7 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Service
+/*@Service
 public class SessionInterceptor implements HandlerInterceptor{
     @Autowired
     private UserMapper userMapper;
@@ -51,4 +51,4 @@ public class SessionInterceptor implements HandlerInterceptor{
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex) throws Exception {
 
     }
-}
+}*/

@@ -4,7 +4,7 @@ target/
 logs/
 !**/src/main/**/target/
 !**/src/test/**/target/
-application.properties
+src/main/resources/user.properties
 
 ### STS ###
 .apt_generated

@@ -1,85 +1,72 @@
 package com.kyriewang.kkbbs.controller;
 
+import com.kyriewang.kkbbs.dto.ResultDto;
 import com.kyriewang.kkbbs.exception.CustomizeErrorCode;
 import com.kyriewang.kkbbs.exception.CustomizerException;
 import com.kyriewang.kkbbs.mapper.QuestionMapper;
 import com.kyriewang.kkbbs.model.Question;
 import com.kyriewang.kkbbs.model.User;
 import com.kyriewang.kkbbs.service.TagCache;
+import com.kyriewang.kkbbs.shiro.AccountProfile;
+import io.jsonwebtoken.lang.Assert;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
+@RestController
 public class PublishController {
 
     @Autowired
     QuestionMapper questionMapper;
 
     @GetMapping("/publish/{id}")
-    public String edit(@PathVariable("id") Long id,
-                       Model model){
+    public ResultDto edit(@PathVariable("id") Long id,
+                          Model model){
         Question question = questionMapper.getQuestionByquesitonid(id);
-        model.addAttribute("title",question.getTitle());
-        model.addAttribute("description",question.getDescription());
-        model.addAttribute("tag",question.getTag());
-        model.addAttribute("id",question.getId());
-        model.addAttribute("tags", TagCache.getDefaultTags());
-        return "publish";
+        if(question==null){
+            Assert.notNull(question, "该问题不存在了!");
+        }
+        model.addAttribute("question",question);
+        model.addAttribute("tags",TagCache.getDefaultTags());
+        return ResultDto.succ("问题查询成功",model);
     }
 
-    @GetMapping("/publish")
-    public String publish(Model model){
-        model.addAttribute("tags", TagCache.getDefaultTags());
-        return "publish";
+    //返回标签数据
+    @GetMapping("/publish/add")
+    public ResultDto publish(){
+        return ResultDto.succ("tags",TagCache.getDefaultTags());
     }
 
-    @PostMapping("/publish")
-    public String submitQuestion(
-            @RequestParam(value = "title",required = false) String title,
-            @RequestParam(value = "description",required = false) String description,
-            @RequestParam(value = "tag",required = false) String tag,
-            @RequestParam(value = "id",required = false) Long id,
-            HttpServletRequest request,
-            Model model
+    /*@RequestParam(value = "title",required = false) String title,
+    @RequestParam(value = "description",required = false) String description,
+    @RequestParam(value = "tag",required = false) String tag,
+    @RequestParam(value = "id",required = false) Long id,*/
+
+    @RequiresAuthentication
+    @PostMapping("/publish/add")
+    public ResultDto submitQuestion(
+            @Validated @RequestBody Question questiontemp
             ){
 
-        //把数据存储到model当中，这样前端可以拿到数据
-        model.addAttribute("title",title);
-        model.addAttribute("description",description);
-        model.addAttribute("tag",tag);
-        model.addAttribute("tags", TagCache.getDefaultTags());
-        User user = (User)request.getSession().getAttribute("user");
-        if(user==null){
-            model.addAttribute("error","用户未登录");
-            return "publish";
+        //从shiro里拿取用户信息
+        AccountProfile userprofile = (AccountProfile)SecurityUtils.getSubject().getPrincipal();
+        if(userprofile==null){
+            return ResultDto.errorOf(CustomizeErrorCode.NO_LOGIN);
         }
-        if(title==null||title==""){
-            model.addAttribute("error","标题不能为空");
-            return "publish";
-        }
-        if(description==null||description==""){
-            model.addAttribute("error","问题描述不能为空");
-            return "publish";
-        }
-        if(tag==null||tag==""){
-            model.addAttribute("error","标签不能为空");
-            return "publish";
-        }
-
+        Long id = questiontemp.getId();
         Question question = new Question();
-        question.setTitle(title);
-        question.setDescription(description);
-        question.setTag(tag);
+        question.setTitle(questiontemp.getTitle());
+        question.setDescription(questiontemp.getDescription());
+        question.setTag(questiontemp.getTag());
         question.setId(id);//这里还是需要id数据，因为与上面的question不是同一个
         if(id==null){//数据库中没有该问题,插入新的数据
-            question.setCreator(user.getId());
+            question.setCreator(userprofile.getId());
             question.setGmt_create(System.currentTimeMillis());
             question.setGmt_modified(question.getGmt_create());
             questionMapper.insertQuestion(question);
@@ -91,6 +78,6 @@ public class PublishController {
             questionMapper.update(question);
         }
 
-        return "redirect:/";
+        return ResultDto.succ("提交成功",null);
     }
 }

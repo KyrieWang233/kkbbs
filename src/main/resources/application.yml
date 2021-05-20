@@ -1,49 +1,65 @@
+#配置端口
+server:
+  error:
+    includeException: true
+    includeStacktrace: ALWAYS
+    includeMessage: ALWAYS
+  port: 8081
+
+
 spring:
   datasource:
     username: root
     password: 123456
     url: jdbc:mysql://127.0.0.1:3306/kkbbs?characterEncoding=UTF-8&serverTimezone=GMT
     driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource #自定义数据源
-    #Spring Boot 默认是不注入这些属性值的，需要自己绑定
-    #druid 数据源专有配置
-    initialSize: 5
-    minIdle: 5
-    maxActive: 20
-    maxWait: 60000
-    timeBetweenEvictionRunsMillis: 60000
-    minEvictableIdleTimeMillis: 300000
-    validationQuery: SELECT 1 FROM DUAL
-    testWhileIdle: true
-    testOnBorrow: false
-    testOnReturn: false
-    poolPreparedStatements: true
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-active: 200
+        max-wait: -1ms
+        max-idle: 10
+        min-idle: 0
+    timeout: 1000
+#    type: com.alibaba.druid.pool.DruidDataSource #自定义数据源
+#    #Spring Boot 默认是不注入这些属性值的，需要自己绑定
+#    #druid 数据源专有配置
+#    initialSize: 5
+#    minIdle: 5
+#    maxActive: 20
+#    maxWait: 60000
+#    timeBetweenEvictionRunsMillis: 60000
+#    minEvictableIdleTimeMillis: 300000
+#    validationQuery: SELECT 1 FROM DUAL
+#    testWhileIdle: true
+#    testOnBorrow: false
+#    testOnReturn: false
+#    poolPreparedStatements: true
+#
+#    #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+#    #如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
+#    #则导入 log4j 依赖即可，Maven 地址：https://mvnrepository.com/artifact/log4j/log4j
+#    #springboot默认使用slf4j对应logback，可修改为slf4j
+#    filters: stat,wall,slf4j
+#    maxPoolPreparedStatementPerConnectionSize: 20
+#    useGlobalDataSourceStat: true
+#    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
 
-    #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
-    #如果允许时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
-    #则导入 log4j 依赖即可，Maven 地址：https://mvnrepository.com/artifact/log4j/log4j
-    #springboot默认使用slf4j对应logback，可修改为slf4j
-    filters: stat,wall,slf4j
-    maxPoolPreparedStatementPerConnectionSize: 20
-    useGlobalDataSourceStat: true
-    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-
-server:
-  error:
-    includeException: true
-    includeStacktrace: ALWAYS
-    includeMessage: ALWAYS
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.kyriewang.kkbbs.mapper
-logging:
-  file:
-    name: logs/kkbbs.log
-    max-size: 10MB
-    max-history: 7
+
+#logging:
+#  file:
+#    name: logs/kkbbs.log
+#    max-size: 10MB
+#    max-history: 7
     #保留最近7天的日志，每个文件保存大小为1MB
-  level:
-    root: info
+#  level:
+#    root: info
     #com:
     #  kyriewang:
     #    kkbbs:
