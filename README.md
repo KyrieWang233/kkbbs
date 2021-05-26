@@ -28,4 +28,8 @@ github.client.secret=
 github.redirect.url=
 qcloud.secretId=
 qcloud.secretKey=
+kyriewang.jwt.secret=
+# token有效时长
+kyriewang.jwt.expire=604800
+kyriewang.jwt.header=token
 ```
