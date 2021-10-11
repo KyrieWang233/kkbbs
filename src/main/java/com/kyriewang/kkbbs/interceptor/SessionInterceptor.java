@@ -1,18 +1,5 @@
 package com.kyriewang.kkbbs.interceptor;
 
-import com.kyriewang.kkbbs.mapper.UserMapper;
-import com.kyriewang.kkbbs.model.User;
-import com.kyriewang.kkbbs.service.NotificationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
-import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 /*@Service
 public class SessionInterceptor implements HandlerInterceptor{
     @Autowired

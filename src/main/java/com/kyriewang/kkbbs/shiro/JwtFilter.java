@@ -2,6 +2,8 @@ package com.kyriewang.kkbbs.shiro;
 
 import com.alibaba.fastjson.JSON;
 import com.kyriewang.kkbbs.dto.ResultDto;
+import com.kyriewang.kkbbs.exception.CustomizeErrorCode;
+import com.kyriewang.kkbbs.exception.CustomizerException;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
@@ -21,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLEncoder;
 
 @Slf4j
 @Component
@@ -49,8 +52,9 @@ public class JwtFilter extends AuthenticatingFilter {
     @Override
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
         HttpServletRequest request = (HttpServletRequest)servletRequest;
+        HttpServletResponse response = (HttpServletResponse)servletResponse;
         String token = request.getHeader("Authorization");
-        if(StringUtils.isEmpty(token)){
+        if(StringUtils.isEmpty(token)||token.equals("null")){//前端的空值也可以被解析成字符串null
             //通过注解进行权限处理，这里不作拦截
             return true;
         }else{
@@ -58,12 +62,17 @@ public class JwtFilter extends AuthenticatingFilter {
             // 判断是否已过期
             Claims claim = jwtUtils.getClaimByToken(token);
             if(claim == null || jwtUtils.isTokenExpired(claim.getExpiration())) {
-                throw new ExpiredCredentialsException("token已失效，请重新登录！");
+                //throw new CustomizerException(CustomizeErrorCode.TOKEN_TIMEOUT_ERROR);//此处抛出的异常无法被全局异常捕获，需要将请求转发到controller层
+                //throw new ExpiredCredentialsException("token已失效，请重新登录！");
+                request.setAttribute("code", CustomizeErrorCode.TOKEN_TIMEOUT_ERROR);
+                request.getRequestDispatcher("/filterError").forward(request, response);
+                return true;
             }
         }
         //执行登录
         return executeLogin(servletRequest, servletResponse);
     }
+
 
     //登录成功后做处理
     @Override

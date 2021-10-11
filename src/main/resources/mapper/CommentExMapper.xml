@@ -18,9 +18,9 @@
         <result column="content" jdbcType="VARCHAR" property="content" />
     </resultMap>
     <update id="incCommentCount" parameterType="com.kyriewang.kkbbs.model.Comment">
-        UPDATE COMMENT
+        UPDATE comment
         SET
-        COMMENT_COUNT = COMMENT_COUNT + #{comment_count,jdbcType=INTEGER}
-        WHERE ID = #{id}
+        comment_count = comment_count + #{comment_count,jdbcType=INTEGER}
+        WHERE id = #{id}
     </update>
 </mapper>

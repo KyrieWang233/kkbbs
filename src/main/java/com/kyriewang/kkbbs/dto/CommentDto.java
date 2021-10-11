@@ -1,6 +1,5 @@
 package com.kyriewang.kkbbs.dto;
 
-import com.kyriewang.kkbbs.model.User;
 import lombok.Data;
 
 import java.util.List;

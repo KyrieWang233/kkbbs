@@ -24,6 +24,10 @@ spring:
         max-idle: 10
         min-idle: 0
     timeout: 1000
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 #    type: com.alibaba.druid.pool.DruidDataSource #自定义数据源
 #    #Spring Boot 默认是不注入这些属性值的，需要自己绑定
 #    #druid 数据源专有配置

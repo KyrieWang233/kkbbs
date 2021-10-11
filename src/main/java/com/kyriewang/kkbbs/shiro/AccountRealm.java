@@ -4,7 +4,6 @@ import com.kyriewang.kkbbs.model.User;
 import com.kyriewang.kkbbs.service.NotificationService;
 import com.kyriewang.kkbbs.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;

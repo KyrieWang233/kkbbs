@@ -12,11 +12,13 @@ public enum CustomizeErrorCode implements ICustomizeErrorCode {
     READ_NOTIFICATION_FAIL(2008, "兄弟你这是读别人的信息呢？"),
     NOTIFICATION_NOT_FOUND(2009, "消息莫非是不翼而飞了？"),
     FILE_UPLOAD_FAIL(2010,"图片上传失败"),
-    TOKEN_TIMEOUT(2011,"token已失效，请重新登录"),
+    TOKEN_TIMEOUT_ERROR(2011,"token已失效，请重新登录"),
     NOTIFICATION_HAS_READ(2012,"这个消息已经被你读过了"),
     PASSWORD_ERROR(2013,"密码错误！"),
     USER_NOT_FOUND(2014,"用户不存在！"),
-    LOGIN_TIME_OUT(2015,"登录超时！")
+    LOGIN_TIME_OUT(2015,"登录超时！"),
+    UPLOAD_SIZE_ERROR(2016,"上传文件过大！"),
+    DELETE_QUESTION_ERROR(2017,"不能删除别人的问题")
     ;
 
     private Integer code;

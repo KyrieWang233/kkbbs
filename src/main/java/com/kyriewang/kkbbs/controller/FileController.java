@@ -2,6 +2,8 @@ package com.kyriewang.kkbbs.controller;
 
 import com.kyriewang.kkbbs.dto.FileDto;
 import com.kyriewang.kkbbs.dto.ResultDto;
+import com.kyriewang.kkbbs.exception.CustomizeErrorCode;
+import com.kyriewang.kkbbs.exception.CustomizerException;
 import com.kyriewang.kkbbs.provider.QCloudProvider;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,13 @@ public class FileController {
     @RequestMapping("/file/upload")
     public ResultDto upload(HttpServletRequest request, MultipartFile image){
         MultipartFile file = image;
+        Long len = file.getSize();
+        double fileSize = (double) len / 1048576;
+        if(fileSize>4){
+            return ResultDto.errorOf(new CustomizerException(CustomizeErrorCode.UPLOAD_SIZE_ERROR));//文件上传过大返回错误
+        }
         try{
-            String downloadurl = qCloudProvider.cloudUpload(file.getInputStream(),file.getContentType(),file.getOriginalFilename());
+            String downloadurl = qCloudProvider.cloudUpload(file.getInputStream(),file.getContentType(),file.getOriginalFilename(),"picture");
             FileDto fileDto = new FileDto();
             fileDto.setSuccess(1);
             fileDto.setMessage("ok");

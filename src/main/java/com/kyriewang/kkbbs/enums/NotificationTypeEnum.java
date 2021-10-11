@@ -2,7 +2,7 @@ package com.kyriewang.kkbbs.enums;
 
 public enum NotificationTypeEnum {
     REPLY_QUESTION(1, "回复了问题"),
-    REPLY_COMMENT(2, "回复了评论");
+    REPLY_COMMENT(2, "回复了你的评论，在问题");
 
     private Integer type;
     private String name;

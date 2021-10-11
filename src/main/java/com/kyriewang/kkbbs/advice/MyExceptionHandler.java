@@ -6,6 +6,7 @@ import com.kyriewang.kkbbs.exception.CustomizeErrorCode;
 import com.kyriewang.kkbbs.exception.CustomizerException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.ShiroException;
+import org.apache.shiro.authc.ExpiredCredentialsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -20,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
+
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.ui.Model;
 
@@ -59,6 +62,14 @@ public class MyExceptionHandler {
 
     //其他异常
     @ResponseBody
+    @ExceptionHandler(value = MaxUploadSizeExceededException.class)
+    public ResultDto handler(MaxUploadSizeExceededException ex){
+        log.error("文件上传异常：----------------{}", ex);
+        return ResultDto.errorOf(CustomizeErrorCode.UPLOAD_SIZE_ERROR);
+    }
+
+    //其他异常
+    @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public ResultDto handleException(Exception ex){
         log.error("其他异常：----------------{}", ex);
@@ -72,34 +83,4 @@ public class MyExceptionHandler {
         }
         return HttpStatus.valueOf(statusCode);
     }
-   /* @ExceptionHandler(value = {Exception.class})
-    public ModelAndView  handleControllerException(HttpServletRequest request, HttpServletResponse response, Throwable ex, Model model) {
-        if(request.getContentType().equals("application/json")){
-            ResultDto resultDto;
-            if(ex instanceof CustomizerException) {
-                resultDto = ResultDto.errorOf((CustomizerException) ex);
-            }else {
-                resultDto = ResultDto.errorOf(CustomizeErrorCode.SYS_ERROR);
-            }
-            try{
-                response.setContentType("application/json");
-                response.setStatus(200);
-                response.setCharacterEncoding("utf-8");
-                PrintWriter writer = response.getWriter();
-                writer.write(JSON.toJSONString(resultDto));
-                writer.close();
-            }catch (IOException ioe){
-                ioe.printStackTrace();
-            }
-            return null;
-        }
-        else{
-            if(ex instanceof CustomizerException){
-                model.addAttribute("message",ex.getMessage());
-            }else {
-                model.addAttribute("message", "服务器冒烟了，要不你稍后再试试");
-            }
-            return new ModelAndView("error");
-        }
-    }*/
 }

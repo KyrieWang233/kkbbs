@@ -5,19 +5,15 @@ import com.kyriewang.kkbbs.exception.CustomizeErrorCode;
 import com.kyriewang.kkbbs.exception.CustomizerException;
 import com.kyriewang.kkbbs.mapper.QuestionMapper;
 import com.kyriewang.kkbbs.model.Question;
-import com.kyriewang.kkbbs.model.User;
 import com.kyriewang.kkbbs.service.TagCache;
 import com.kyriewang.kkbbs.shiro.AccountProfile;
 import io.jsonwebtoken.lang.Assert;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class PublishController {

@@ -1,15 +1,11 @@
 package com.kyriewang.kkbbs.controller;
 
-import com.kyriewang.kkbbs.dto.NotificationDto;
 import com.kyriewang.kkbbs.dto.ResultDto;
-import com.kyriewang.kkbbs.enums.NotificationTypeEnum;
 import com.kyriewang.kkbbs.exception.CustomizeErrorCode;
-import com.kyriewang.kkbbs.model.User;
 import com.kyriewang.kkbbs.service.NotificationService;
 import com.kyriewang.kkbbs.shiro.AccountProfile;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

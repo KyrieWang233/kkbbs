@@ -5,8 +5,6 @@ import com.kyriewang.kkbbs.dto.CommentPostDto;
 import com.kyriewang.kkbbs.dto.ResultDto;
 import com.kyriewang.kkbbs.enums.CommentTypeEnum;
 import com.kyriewang.kkbbs.exception.CustomizeErrorCode;
-import com.kyriewang.kkbbs.model.Comment;
-import com.kyriewang.kkbbs.model.User;
 import com.kyriewang.kkbbs.service.CommentService;
 import com.kyriewang.kkbbs.shiro.AccountProfile;
 import org.apache.shiro.SecurityUtils;
