@@ -6,13 +6,14 @@
 |  Spring Boot   |  http://projects.spring.io/spring-boot/#quick-start   |
 |   MyBatis  |  https://mybatis.org/mybatis-3/zh/index.html   |
 |   MyBatis Generator  |  http://mybatis.org/generator/   |
-|   H2  |   http://www.h2database.com/html/main.html  |
+|   Mysql  |     |
 |   Flyway  |   https://flywaydb.org/getstarted/firststeps/maven  |
 |Lombok| https://www.projectlombok.org |
-|Bootstrap|https://v3.bootcss.com/getting-started/|
 |Github OAuth|https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/|
 |QCloud-cos|https://cloud.tencent.com/document/product/436/10199|
-|Bootstrap|https://v3.bootcss.com/getting-started/|
+|Element-ui|https://element.eleme.cn/#/zh-CN/|
+|Redis|
+|Shiro|
 
 
 运行 migrate 和 generator 的命令
@@ -33,3 +34,6 @@ kyriewang.jwt.secret=
 kyriewang.jwt.expire=604800
 kyriewang.jwt.header=token
 ```
+主要是个人学习所用，代码很多地方不规范
+
+数据库方面只是简单了使用了MyBatis Generator,处于偷懒和注解配置一起混用了
