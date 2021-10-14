@@ -12,22 +12,4 @@ import java.sql.SQLException;
 @SpringBootTest
 class KkbbsApplicationTests {
 
-	@Autowired
-	DataSource dataSource;
-
-	@Test
-	void contextLoads() throws SQLException {
-		System.out.println(dataSource.getClass());
-		//获得连接
-		Connection connection =   dataSource.getConnection();
-		System.out.println(connection);
-
-		DruidDataSource druidDataSource = (DruidDataSource) dataSource;
-		System.out.println("druidDataSource 数据源最大连接数：" + druidDataSource.getMaxActive());
-		System.out.println("druidDataSource 数据源初始化连接数：" + druidDataSource.getInitialSize());
-
-		//关闭连接
-		connection.close();
-	}
-
 }
