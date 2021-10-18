@@ -43,7 +43,7 @@ kyriewang.jwt.header=token
 
 ### 几个简单的页面展示
 1. 首页
-   ![首页](https://github.com/KyrieWang233/kkbbs/blob/main/src/main/resources/preview/%E4%B8%BB%E9%A1%B5.png)
+   ![首页](https://kkbbs-1252824606.cos.ap-nanjing.myqcloud.com/readme/%E4%B8%BB%E9%A1%B5.png)
 2. 评论
    ![评论](src/main/resources/preview/评论.png)
 3. 个人页面
