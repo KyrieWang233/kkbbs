@@ -45,8 +45,8 @@ kyriewang.jwt.header=token
 1. 首页
    ![首页](https://kkbbs-1252824606.cos.ap-nanjing.myqcloud.com/readme/%E4%B8%BB%E9%A1%B5.png)
 2. 评论
-   ![评论](src/main/resources/preview/评论.png)
+   ![评论](https://kkbbs-1252824606.cos.ap-nanjing.myqcloud.com/readme/%E8%AF%84%E8%AE%BA.png)
 3. 个人页面
-   ![个人页面](src/main/resources/preview/管理.png)
+   ![个人页面](https://kkbbs-1252824606.cos.ap-nanjing.myqcloud.com/readme/%E7%AE%A1%E7%90%86.png)
 4. 更换头像
-   ![更换头像](src/main/resources/preview/头像.png)
+   ![更换头像](https://kkbbs-1252824606.cos.ap-nanjing.myqcloud.com/readme/%E5%A4%B4%E5%83%8F.png)
