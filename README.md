@@ -1,6 +1,7 @@
 ## 基于SpringBoot的论坛网站
+线上地址：www.kyriewang.cn 
 
-# 技术栈
+## 技术栈
 |  技术   |  链接   |
 | --- | --- |
 |  Spring Boot   |  http://projects.spring.io/spring-boot/#quick-start   |
@@ -13,16 +14,18 @@
 |QCloud-cos|https://cloud.tencent.com/document/product/436/10199|
 |Element-ui|https://element.eleme.cn/#/zh-CN/|
 |Redis|
-|Shiro|
+|Shiro+JWT|
+### 前端地址
+https://github.com/KyrieWang233/kkbbs-vue
 
-
+### 需要的操作和配置
 运行 migrate 和 generator 的命令
 ```bash
 mvn flyway:migrate
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 ```
 
-需要自己添加的配置
+需要自己添加的配置文件 `user.properties` 内容如下： 
 ```properties
 github.client.id=
 github.client.secret=
@@ -38,7 +41,12 @@ kyriewang.jwt.header=token
 
 数据库方面只是简单了使用了MyBatis Generator,处于偷懒和注解配置一起混用了
 
-###几个简单的页面展示
+### 几个简单的页面展示
 1. 首页
+   ![首页](src/main/resources/preview/主页.png)
 2. 评论
-3. 个人详情
+   ![评论](src/main/resources/preview/评论.png)
+3. 个人页面
+   ![个人页面](src/main/resources/preview/管理.png)
+4. 更换头像
+   ![更换头像](src/main/resources/preview/头像.png)
